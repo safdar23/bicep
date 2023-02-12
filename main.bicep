@@ -1,6 +1,9 @@
 @description('Data Factory Name')
 param dataFactoryName string = 'datafactory${uniqueString(resourceGroup().id)}'
 
+@description('Storage SKU')
+param storageSKU string
+
 @description('Location of the data factory.')
 param location string = resourceGroup().location
 
@@ -19,7 +22,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = {
   name: storageAccountName
   location: location
   sku: {
-    name: 'Standard_LRS'
+    name: storageSKU
   }
   kind: 'StorageV2'
 }
