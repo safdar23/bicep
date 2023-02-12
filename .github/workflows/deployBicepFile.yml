@@ -20,5 +20,5 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./main.bicep
-        parameters: 'dataFactoryName=biceptemplateADF storageSKU=Standard_LRS storageAccountName=bicepstorageaccount'
+        parameters: 'dataFactoryName=biceptemplateADFexamplerg storageSKU=Standard_LRS storageAccountName=bicepstorageaccountexamplerg'
         failOnStdErr: false
