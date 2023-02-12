@@ -1,14 +1,11 @@
 @description('Data Factory Name')
-param dataFactoryName string
-
-@description('Storage SKU')
-param storageSKU string
+param dataFactoryName string = 'datafactory${uniqueString(resourceGroup().id)}'
 
 @description('Location of the data factory.')
 param location string = resourceGroup().location
 
 @description('Name of the Azure storage account that contains the input/output data.')
-param storageAccountName string
+param storageAccountName string = 'storage${uniqueString(resourceGroup().id)}'
 
 @description('Name of the blob container in the Azure Storage account.')
 param blobContainerName string = 'blob${uniqueString(resourceGroup().id)}'
@@ -22,7 +19,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = {
   name: storageAccountName
   location: location
   sku: {
-    name: storageSKU
+    name: 'Standard_LRS'
   }
   kind: 'StorageV2'
 }
