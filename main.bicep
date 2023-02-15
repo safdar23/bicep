@@ -1,3 +1,8 @@
+@description('Conditional resource creation')
+param deployStorage bool
+param deployADF bool
+param deployEventHub bool
+
 @description('Data Factory Name')
 param dataFactoryName string
 
@@ -18,7 +23,7 @@ var dataFactoryDataSetInName = 'ArmtemplateTestDatasetIn'
 var dataFactoryDataSetOutName = 'ArmtemplateTestDatasetOut'
 var pipelineName = 'ArmtemplateSampleCopyPipeline'
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = if (deployStorage) {
   name: storageAccountName
   location: location
   sku: {
@@ -27,11 +32,11 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = {
   kind: 'StorageV2'
 }
 
-resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-08-01' = {
+resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-08-01' = if (deployStorage) {
   name: '${storageAccount.name}/default/${blobContainerName}'
 }
 
-resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = {
+resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = if (deployADF) {
   name: dataFactoryName
   location: location
   identity: {
