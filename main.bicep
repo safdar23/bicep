@@ -1,7 +1,6 @@
 @description('Conditional resource creation')
 param deployStorage bool
 param deployADF bool
-param deployEventHub bool
 
 @description('Data Factory Name')
 param dataFactoryName string
