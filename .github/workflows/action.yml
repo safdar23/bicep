@@ -12,7 +12,7 @@ on:
         required: true
         default: 'ondemamdstorage'
       storageSKU:
-        description: 'Storage Name'
+        description: 'Storage SKU'
         required: true
         default: 'Standard_LRS'
       deployStorage:
