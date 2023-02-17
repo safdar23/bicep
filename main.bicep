@@ -173,7 +173,7 @@ resource eventHub 'Microsoft.EventHub/namespaces/eventhubs@2021-11-01' = if (dep
 }
 
 @description('Specify a name for the Azure Purview account.')
-param purviewName string = 'azurePurview${uniqueString(resourceGroup().id)}'
+param purviewName string = 'bicepPurview'
 
 @description('Specify a region for resource deployment.')
 
@@ -189,7 +189,7 @@ resource purview 'Microsoft.Purview/accounts@2021-12-01' = if (deployPurview) {
   }
   properties: {
     publicNetworkAccess: 'Enabled'
-    managedResourceGroupName: 'managed-rg-${purviewName}'
+    managedResourceGroupName: 'exampleRG'
   }
 }
 
