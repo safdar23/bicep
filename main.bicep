@@ -2,6 +2,7 @@
 param deployStorage bool
 param deployADF bool
 param deployEventHub bool
+param deployPurview bool
 
 @description('Data Factory Name')
 param dataFactoryName string
@@ -170,3 +171,26 @@ resource eventHub 'Microsoft.EventHub/namespaces/eventhubs@2021-11-01' = if (dep
     partitionCount: 1
   }
 }
+
+@description('Specify a name for the Azure Purview account.')
+param purviewName string = 'azurePurview${uniqueString(resourceGroup().id)}'
+
+@description('Specify a region for resource deployment.')
+param location string = resourceGroup().location
+
+resource purview 'Microsoft.Purview/accounts@2021-12-01' = if (deployPurview) {
+  name: purviewName
+  location: location
+  sku: {
+    name: 'Standard'
+    capacity: 1
+  }
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    publicNetworkAccess: 'Enabled'
+    managedResourceGroupName: 'managed-rg-${purviewName}'
+  }
+}
+
