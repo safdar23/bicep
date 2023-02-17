@@ -50,7 +50,7 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        parameters: 'dataFactoryName=${{ github.event.inputs.dataFactoryName }} storageSKU= Standard_LRS storageAccountName=${{ github.event.inputs.storageAccountName }} deployStorage=${{ github.event.inputs.deployStorage }} deployADF=${{ github.event.inputs.deployADF }} projectName=${{ github.event.inputs.projectName }} deployEventHub=${{ github.event.inputs.deployEventHub }}'
+        parameters: 'dataFactoryName=${{ github.event.inputs.dataFactoryName }} storageSKU=Standard_LRS storageAccountName=${{ github.event.inputs.storageAccountName }} deployStorage=${{ github.event.inputs.deployStorage }} deployADF=${{ github.event.inputs.deployADF }} projectName=${{ github.event.inputs.projectName }} deployEventHub=${{ github.event.inputs.deployEventHub }}'
         template: ./main.bicep
         failOnStdErr: false
         
