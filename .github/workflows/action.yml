@@ -46,17 +46,11 @@ jobs:
 
       # Deploy Bicep files
     - name: deploy
-      uses: azure/arm-deploy@v2.2.0
+      uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        dataFactoryName: '${{ github.event.inputs.dataFactoryName }}'
-        storageAccountName: '${{ github.event.inputs.storageAccountName }}'
-        storageSKU: '${{ github.event.inputs.storageSKU }}'
-        projectName: '${{ github.event.inputs.projectName }}'
-        deployADF: '${{ github.event.inputs.deployADF }}'
-        deployEventHub: '${{ github.event.inputs.deployEventHub }}'
-        deployStorage: '${{ github.event.inputs.deployStorage }}'
+        parameters: 'dataFactoryName=${{ github.event.inputs.dataFactoryName }} storageSKU= ${{ github.event.inputs.storageSKU }} storageAccountName=${{ github.event.inputs.storageAccountName }} deployStorage=${{ github.event.inputs.deployStorage }} deployADF=${{ github.event.inputs.deployADF }} projectName=${{ github.event.inputs.projectName }} deployEventHub=${{ github.event.inputs.deployEventHub }}'
         template: ./main.bicep
         failOnStdErr: false
         
