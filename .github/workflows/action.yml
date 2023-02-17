@@ -10,11 +10,11 @@ on:
       storageAccountName:
         description: 'Storage Name'
         required: true
-        default: 'Standard_LRS'
+        default: 'ondemamdstorage'
       storageSKU:
         description: 'Storage Name'
         required: true
-        default: 'true'
+        default: 'Standard_LRS'
       deployStorage:
         description: 'bool parameter for storage deployment'
         required: true
