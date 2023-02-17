@@ -1,0 +1,21 @@
+name: parameters_on_demand
+
+on:
+  workflow_dispatch:
+    inputs:
+      dataFactoryName:
+        description: 'Azure Data Factory'
+        required: true
+        default: 'ondemandadf'
+      storageAccountName:
+        description: 'Storage Name'
+        required: true
+        default: 'true'
+      storageSKU:
+        description: 'Storage Name'
+        required: true
+        default: 'true'
+      projectName:
+        description: 'Storage Name'
+        required: true
+        default: 'true'
