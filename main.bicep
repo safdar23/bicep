@@ -189,7 +189,7 @@ resource purview 'Microsoft.Purview/accounts@2021-12-01' = if (deployPurview) {
   }
   properties: {
     publicNetworkAccess: 'Enabled'
-    managedResourceGroupName: ''managed-rg-${purviewName}''
+    managedResourceGroupName: 'managed-rg-${purviewName}'
   }
 }
 
