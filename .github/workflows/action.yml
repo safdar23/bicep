@@ -10,15 +10,27 @@ on:
       storageAccountName:
         description: 'Storage Name'
         required: true
-        default: 'true'
+        default: 'Standard_LRS'
       storageSKU:
         description: 'Storage Name'
+        required: true
+        default: 'true'
+      deployStorage:
+        description: 'bool parameter for storage deployment'
+        required: true
+        default: 'true'
+      deployADF:
+        description: 'bool parameter for ADF deployment'
+        required: true
+        default: 'true'
+      deployEventHub:
+        description: 'bool parameter for Event Hub deployment'
         required: true
         default: 'true'
       projectName:
         description: 'Storage Name'
         required: true
-        default: 'true'
+        default: 'bicepstaccountexr'
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -42,6 +54,9 @@ jobs:
         storageAccountName: '${{ github.event.inputs.storageAccountName }}'
         storageSKU: '${{ github.event.inputs.storageSKU }}'
         projectName: '${{ github.event.inputs.projectName }}'
+        deployADF: '${{ github.event.inputs.deployADF }}'
+        deployEventHub: '${{ github.event.inputs.deployEventHub }}'
+        deployStorage: '${{ github.event.inputs.deployStorage }}'
         template: ./main.bicep
         failOnStdErr: false
         
