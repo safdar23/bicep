@@ -18,11 +18,6 @@ param storageAccountName string
 @description('Name of the blob container in the Azure Storage account.')
 param blobContainerName string = 'blob${uniqueString(resourceGroup().id)}'
 
-var dataFactoryLinkedServiceName = 'ArmtemplateStorageLinkedService'
-var dataFactoryDataSetInName = 'ArmtemplateTestDatasetIn'
-var dataFactoryDataSetOutName = 'ArmtemplateTestDatasetOut'
-var pipelineName = 'ArmtemplateSampleCopyPipeline'
-
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = if (deployStorage) {
   name: storageAccountName
   location: location
