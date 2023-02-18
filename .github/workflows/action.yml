@@ -22,15 +22,15 @@ on:
       deployStorage:
         description: 'bool parameter for storage deployment'
         required: true
-        default: 'true'
+        default: true
       deployADF:
         description: 'bool parameter for ADF deployment'
         required: true
-        default: 'true'
+        default: true
       deployEventHub:
         description: 'bool parameter for Event Hub deployment'
         required: true
-        default: 'true'
+        default: true
       
 jobs:
   build-and-deploy:
