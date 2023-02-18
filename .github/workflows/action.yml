@@ -15,6 +15,10 @@ on:
         description: 'Storage SKU'
         required: true
         default: 'Standard_LRS'
+      projectName:
+        description: 'EvenHub Name Space Project Name'
+        required: true
+        default: 'bicepeventhubNS'
       deployStorage:
         description: 'bool parameter for storage deployment'
         required: true
@@ -27,10 +31,7 @@ on:
         description: 'bool parameter for Event Hub deployment'
         required: true
         default: 'true'
-      projectName:
-        description: 'Storage Name'
-        required: true
-        default: 'bicepstaccountexr'
+      
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
