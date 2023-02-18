@@ -1,4 +1,4 @@
-name: parameters_on_demand
+name: Power App Parameters
 
 on:
   workflow_dispatch:
