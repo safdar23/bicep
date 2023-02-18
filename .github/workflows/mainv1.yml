@@ -27,6 +27,10 @@ on:
         description: 'bool parameter for ADF deployment'
         required: true
         default: true
+      deployprojectName:
+        description: 'bool parameter for ADF deployment'
+        required: true
+        default: true
       
 jobs:
   build-and-deploy:
@@ -47,7 +51,7 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
-        parameters: 'dataFactoryName=${{ github.event.inputs.dataFactoryName }} storageSKU=${{ github.event.inputs.storageSKU }} storageAccountName=${{ github.event.inputs.storageAccountName }} deployStorage=${{ github.event.inputs.deployStorage }} deployADF=${{ github.event.inputs.deployADF }} projectName=${{ github.event.inputs.projectName }}'
+        parameters: 'dataFactoryName=${{ github.event.inputs.dataFactoryName }} storageSKU=${{ github.event.inputs.storageSKU }} storageAccountName=${{ github.event.inputs.storageAccountName }} deployStorage=${{ github.event.inputs.deployStorage }} deployADF=${{ github.event.inputs.deployADF }} projectName=${{ github.event.inputs.projectName }} deployprojectName=${{ github.event.inputs.projectName }}'
         template: ./main.bicep
         failOnStdErr: false
         
