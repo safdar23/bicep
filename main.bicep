@@ -1,7 +1,7 @@
 @description('Conditional resource creation')
 param deployStorage bool
 param deployADF bool
-param deployEventHub bool
+param deployprojectName bool
 
 @description('Data Factory Name')
 param dataFactoryName string
@@ -52,7 +52,7 @@ param eventHubSku string = 'Standard'
 var eventHubNamespaceName = '${projectName}ns'
 var eventHubName = projectName
 
-resource eventHubNamespace 'Microsoft.EventHub/namespaces@2021-11-01'  = if (deployEventHub) {
+resource eventHubNamespace 'Microsoft.EventHub/namespaces@2021-11-01'  = if (deployprojectName) {
   name: eventHubNamespaceName
   location: location
   sku: {
@@ -66,7 +66,7 @@ resource eventHubNamespace 'Microsoft.EventHub/namespaces@2021-11-01'  = if (dep
   }
 }
 
-resource eventHub 'Microsoft.EventHub/namespaces/eventhubs@2021-11-01' = if (deployEventHub)  {
+resource eventHub 'Microsoft.EventHub/namespaces/eventhubs@2021-11-01' = if (deployprojectName)  {
   parent: eventHubNamespace
   name: eventHubName
   properties: {
