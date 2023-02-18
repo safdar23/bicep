@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       dataFactoryName:
-        description: 'Azure Data Factory'
+        description: 'Azure Data Factory ins'
         required: true
         default: 'ondemandadf'
       storageAccountName:
