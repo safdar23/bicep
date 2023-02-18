@@ -28,7 +28,7 @@ on:
         required: true
         default: true
       deployprojectName:
-        description: 'bool parameter for ADF deployment'
+        description: 'bool parameter for Event Hub deployment'
         required: true
         default: true
       
